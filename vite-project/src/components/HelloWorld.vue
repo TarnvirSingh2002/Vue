@@ -1,13 +1,26 @@
 <template>
-  <h1>Hello world</h1>
-  <h3>your Todos</h3>
-  <div>
-    <p v-for="(todo, index) in todos":key="index">{{index, todo.toString}} </p>
+  <div id="divv">
+    <h1>Hello world</h1>
+    <h3>your Todos</h3>
+    <div>
+      <!--here we pass the props -->
+      <Todo v-for="(todo, index) in todos"
+        :key="index" 
+        :todoString="todo.toString"
+        :complete="todo.complete"
+        @del="removeTodo(todo)"
+        @edit="editTodo(index, $event)"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import Todo from './Todo.vue';
   export default{
+  components: {
+    Todo
+  },
     data(){
       return {
         todos:[
@@ -33,11 +46,14 @@
           complete:false
         })
       }
-    }
+    },
   }
 </script>
 
-<style>
+<style scoped>
+#divv{
+  background-color: grey;
+}
 h1{
   color:blue;
 }
