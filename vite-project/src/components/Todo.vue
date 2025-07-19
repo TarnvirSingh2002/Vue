@@ -28,7 +28,6 @@ export default{ //all the things we write here used in this component only
             else{
                 
                 this.endEditing;
-                console.log(this.isEditing);
             }
         },
         endEditing(){

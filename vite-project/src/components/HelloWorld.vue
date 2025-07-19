@@ -4,22 +4,25 @@
     <h3>your Todos</h3>
     <div>
       <!--here we pass the props -->
+      <NewTodo  @addtodo="addTodo"/>
       <Todo v-for="(todo, index) in todos"
         :key="index" 
         :todoString="todo.toString"
         :complete="todo.complete"
         @del="removeTodo(todo)"
-        @edit="editTodo(index, $event)"
+        @edit="editTodo(index, $event)",
       />
     </div>
   </div>
 </template>
 
 <script>
+import NewTodo from './NewTodo.vue';
 import Todo from './Todo.vue';
   export default{
   components: {
-    Todo
+    Todo,
+    NewTodo
   },
     data(){
       return {
